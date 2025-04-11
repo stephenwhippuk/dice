@@ -1,0 +1,9 @@
+#pragma once
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cstring>
+#include <memory>
+#include <stdlib.h>
+#include <unistd.h>
+#include <exception>
