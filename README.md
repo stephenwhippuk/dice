@@ -22,6 +22,6 @@ Command Line instructions
 
 1) Clone the repo
 2) browse to the root folder of the repo
-3) cmake -B <build tree> -S .
-4) cmake --build <build tree>
+3) cmake -B /<build-tree/> -S .
+4) cmake --build /<build-tree/>
 
