@@ -20,8 +20,8 @@ You will first need CMake or an IDE capable of using CMAKE
 
 Command Line instructions 
 
-Clone the repo
-browse to the root folder of the repo
-cmake -B <build tree> -S .
-cmake --build <build tree>
+1) Clone the repo
+2) browse to the root folder of the repo
+3) cmake -B <build tree> -S .
+4) cmake --build <build tree>
 
