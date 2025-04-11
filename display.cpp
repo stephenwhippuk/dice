@@ -8,19 +8,23 @@ void initialiseDisplaySettings(){
                 << std::setprecision(2);
 }
 
+inline size_t getPositionOfValue(const DiceSim::simulator_t sim, int value){
+    return value - sim->getGenerator()->minValue();
+}
+
 void printTally(DiceSim::simulator_t sim){
 
     auto value = sim->getGenerator()->minValue();
     auto total = sim->totalCount();
     std::cout << "Value\tActual\tTheory" << std::endl;
     std::cout << "-----\t------\t------" << std::endl;
-    for(auto count : sim->getResults()){
-        auto theory = sim->getGenerator()->theory(total, value);
+    for(auto count : sim->getActuals()){
+        auto theory = sim->getTheoreticals()[ getPositionOfValue(sim, value) ];
         std::cout << value << "\t" << count << "\t" << theory << std::endl;
         value++;
     }
-    auto mean = DiceSim::Mean(sim->getResults());
-    auto stdDev = DiceSim::StdDev(sim->getResults(), mean);
+    auto mean = DiceSim::Mean(sim->getActuals());
+    auto stdDev = DiceSim::StdDev(sim->getActuals(), mean);
     std::cout << "-----\t------\t------" << std::endl;
     std::cout << "Mean" << '\t' << mean << std::endl;
     std::cout << "Std Dev" << '\t' << stdDev << std::endl;

@@ -7,11 +7,12 @@ using namespace DiceSim;
 Simulator::Simulator(int sampleSize, generator_t gen){
     this->generator = gen;
     this->sampleSize = sampleSize;
-    this->tally = tally_t(gen->domainSize());
+    this->actuals = tally_t(gen->domainSize());
+    this->theoreticals = theory_t(gen->domainSize());
 }
 
 void Simulator::Reset(){
-    for(int& i : this->tally){
+    for(int& i : this->actuals){
         i = 0;
     }
 }
@@ -19,12 +20,19 @@ void Simulator::Reset(){
 void Simulator::Run(){
     for(auto i = 0; i < sampleSize; i++){
         int val = generator->actual();
-        tally[val - generator->minValue()]++;
+        actuals[val - generator->minValue()]++;
+    }
+    for(auto v = generator->minValue(), i = 0 ; v <= generator->maxValue(); v++, i++){
+        theoreticals[i] = generator->theory(sampleSize, v);
     }
 }
 
-const tally_t& Simulator::getResults(){
-    return tally;
+const tally_t& Simulator::getActuals(){
+    return actuals;
+}
+
+const theory_t& Simulator::getTheoreticals(){
+    return theoreticals;
 }
 
 const generator_t Simulator::getGenerator(){

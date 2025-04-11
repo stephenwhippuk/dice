@@ -26,6 +26,7 @@ namespace DiceSim{
     };
 
     typedef std::vector<int> tally_t;
+    typedef std::vector<double> theory_t;
     typedef std::shared_ptr<std::exception> error_t;
 };
 
