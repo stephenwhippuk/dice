@@ -1,5 +1,9 @@
 Based upon the Autograph Extra of the Same name 
 
+![image](https://github.com/user-attachments/assets/88f5c49b-5c04-4aaa-ab56-4836b63ba619)
+
+
+
 This is a command line (currently) app to host a simple set of dice simulations 
 
 - 1 Dice 
